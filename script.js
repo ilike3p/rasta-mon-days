@@ -31,3 +31,11 @@ function init() {
   }, 1000);
 }
 
+//Change color of text/box past/present/future
+function timeColor() {
+  currentHour = moment().format("hhA");
+  //If currentHours is before 9am set all hours to background color to gray
+  if (possibleHours.before.indexOf(currentHour) !==-1){
+      $(".hourNotes").css("background-color", "#d3d3d3");
+  }
+  
