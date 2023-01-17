@@ -1,7 +1,7 @@
 
 :root {
   --primary: rgb(160, 227, 231);
-  --secondary:rgb(14, 18, 236);
+  --secondary:rgb(1, 1, 14);
   --tertiary: rgb(233, 134, 41);
   --dark: rgb(28, 29, 33);
   --light: rgb(238, 238, 247);
@@ -78,14 +78,14 @@ button:hover {
   background-image: -moz-linear-gradient(top, #2980b9, #0ca38f);
   background-image: -ms-linear-gradient(top, #2980b9, #0ca38f);
   background-image: -o-linear-gradient(top, #2980b9, #0ca38f);
-  background-image: linear-gradient(to bottom, #2980b9, #0ca38f);
+  background-image: linear-gradient(to bottom, #297eb7, #0ca38f);
   text-decoration: #ffffff;
   flex-grow: inherit;
 }
 
 /* style time for past, present, and future */
 .past {
-  background-color: #cecbcb;
+  background-color: #eeee06;
   color: black;
 }
 
