@@ -3,18 +3,14 @@ $().ready(function () {
       var todayTime = moment().format("MMMM Do, h:mm a");
       $("#currentDay").text(todayTime);
     }
-    const dayjs = require('dayjs')
-   //import dayjs from 'dayjs' // ES 2015
-     dayjs().format()
-
-    getTimeNow(); // when DOM ready, get days.js, show on page
+    getTimeNow();  // when DOM ready, get days.js, show on page
   
     // Check Time State (Past, Present, Future) then set color for Time State
     checkHourState();
     function checkHourState() {
       var currentHour = moment().format("H"); //uses 24 hr format 
       $(".description").each(function () {
-        var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare to moment js time
+        var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare to days js time
         if (plannerHour < currentHour) {
           $(this).addClass("past"); 
         } else if (plannerHour == currentHour) {
