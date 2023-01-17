@@ -1,4 +1,4 @@
- /Users/macbookpro/Desktop/UCLA /Home-work/rasta-mon-days/Assets/05-third-party-apis-homework-demo.gif
+
 ## User Story
 AS An employee with a busy schedule
 I WANT to add important events to a daily planner
