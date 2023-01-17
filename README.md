@@ -1,7 +1,8 @@
 ## User Story
-AS AN employee with a busy schedule
+AS An employee with a busy schedule
 I WANT to add important events to a daily planner
 SO THAT I can manage my time effectively
+https://ilike3p.github.io/rasta-mon-days/
 
 ## Acceptance Criteria
 
@@ -19,4 +20,4 @@ SO THAT I can manage my time effectively
 - WHEN I refresh the page
 - THEN the saved events persist
 
-(./)
+
