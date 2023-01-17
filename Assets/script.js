@@ -1,57 +1,51 @@
-// Display today's day and date
-var todayDate = moment().format('dddd, MMM Do YYYY');
-$("#currentDay").html(todayDate);
-
-$(document).ready(function () {
-    // saveBtn click listener 
-    $(".saveBtn").on("click", function () {
-        // Get nearby values of the description in JQuery
-        var text = $(this).siblings(".description").val();
-        var time = $(this).parent().attr("id");
-
-        // Save text in local storage
-        localStorage.setItem(time, text);
-    })
-   
-    function timeTracker() {
-        //get current number of hours.
-        var timeNow = moment().hour();
-
-         // loop over time blocks
-        $(".time-block").each(function () {
-            var blockTime = parseInt($(this).attr("id").split("hour")[1]);
-
-             // To check the time and add the classes for background indicators
-            if (blockTime < timeNow) {
-                $(this).removeClass("future");
-                $(this).removeClass("present");
-                $(this).addClass("past");
-            }
-            else if (blockTime === timeNow) {
-                $(this).removeClass("past");
-                $(this).removeClass("future");
-                $(this).addClass("present");
-            }
-            else {
-                $(this).removeClass("present");
-                $(this).removeClass("past");
-                $(this).addClass("future");
-
-            }
-        })
+$().ready(function () {
+    function getTimeNow() {
+      var todayTime = moment().format("MMMM Do, h:mm a");
+      $("#currentDay").text(todayTime);
     }
-      
-    // Get item from local storage if any
-    $("#hour8 .description").val(localStorage.getItem("hour8"));
-    $("#hour9 .description").val(localStorage.getItem("hour9"));
-    $("#hour10 .description").val(localStorage.getItem("hour10"));
-    $("#hour11 .description").val(localStorage.getItem("hour11"));
-    $("#hour12 .description").val(localStorage.getItem("hour12"));
-    $("#hour13 .description").val(localStorage.getItem("hour13"));
-    $("#hour14 .description").val(localStorage.getItem("hour14"));
-    $("#hour15 .description").val(localStorage.getItem("hour15"));
-    $("#hour16 .description").val(localStorage.getItem("hour16"));
-    $("#hour17 .description").val(localStorage.getItem("hour17"));
+    getTimeNow(); // when DOM ready, get days.js, show on page
+  
+    // Check Time State (Past, Present, Future) then set color for Time State
+    checkHourState();
+    function checkHourState() {
+      var currentHour = moment().format("H"); //uses 24 hr format 
+      $(".description").each(function () {
+        var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare to moment js time
+        if (plannerHour < currentHour) {
+          $(this).addClass("past"); 
+        } else if (plannerHour == currentHour) {
+          $(this).addClass("present");
+        } else if (plannerHour > currentHour) {
+          $(this).addClass("future");
+        }
+      });
+    }
+  
+    // Save planner input to local storage
+    function saveEntry() {
+      var savedPlan = $(this);
+      var planTime = savedPlan.siblings(".description").attr("id"); // Grabs id of row (=time) relevant to actual input
+      var planText = savedPlan.siblings(".description").val();
+      localStorage.setItem(planTime, planText); // Store entry to be refrenced by time id
+    }
+    // Save user entry on button click
+    $(".savePlanButton").on("click", saveEntry);
+  
+    // check and grab whatever is in local storage for that hour
+    checkSchedule();
+  
+    function checkSchedule() {
+      $("#9").val(localStorage.getItem("9"));
+      $("#10").val(localStorage.getItem("10"));
+      $("#11").val(localStorage.getItem("11"));
+      $("#12").val(localStorage.getItem("12"));
+      $("#13").val(localStorage.getItem("13"));
+      $("#14").val(localStorage.getItem("14"));
+      $("#15").val(localStorage.getItem("15"));
+      $("#16").val(localStorage.getItem("16"));
+      $("#17").val(localStorage.getItem("17"));
+    }
+  });
 
-    timeTracker();
-})
+// local storage checking on page load to show plans
+  window.onload = checkSchedule();
