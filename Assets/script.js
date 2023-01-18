@@ -6,21 +6,18 @@ console.log(now.format());
 
 
 $().ready(function () {
-  function dayjs() {
-    var todayTime = now().format("MMMM D, h:mm A");
+  function getTimeNow() {
+    var todayTime = moment().format("MMMM Do, h:mm a");
     $("#currentDay").text(todayTime);
   }
-  console.log(dayjs().format())
-
-  
-  dayjs(); // when DOM ready, get js, show on page
+  getTimeNow(); // when DOM ready, get moment js, show on page
 
   // Check Time State (Past, Present, Future) then set color for Time State
   checkHourState();
   function checkHourState() {
-    var currentHour = now().format("H"); //uses 24 hr format 
+    var currentHour = moment().format("H"); //uses 24 hr format 
     $(".description").each(function () {
-      var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare time
+      var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare to js time
       if (plannerHour < currentHour) {
         $(this).addClass("past"); 
       } else if (plannerHour == currentHour) {
