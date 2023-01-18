@@ -1,20 +1,33 @@
-const { Dayjs } = require("dayjs");
-const dayjs = require("dayjs");
+import dayjs from 'dayjs';
+
+let now = dayjs();
+
+console.log(now.format());
+console.log("ISO")
+console.log(now.format());
+
+console.log("\nTime")
+console.log(now.format("HH:mm:ss"));
+console.log(now.format("h:mm:ss a"));
+
+console.log("\nDate")
+console.log(now.format("dddd, MMMM D YYYY"));
+console.log(now.format("YYYY-MM-DD"));
 
 
 $().ready(function () {
   function getTimeNow() {
-    var todayTime = Dayjs().format("MMMM D, h:mm A");
+    var todayTime = dayjs().format("MMMM D, h:mm A");
     $("#currentDay").text(todayTime);
   }
   console.log(dayjs().format())
-  
+
   getTimeNow(); // when DOM ready, get js, show on page
 
   // Check Time State (Past, Present, Future) then set color for Time State
   checkHourState();
   function checkHourState() {
-    var currentHour = Dayjs().format("H"); //uses 24 hr format 
+    var currentHour = dayjs().format("H"); //uses 24 hr format 
     $(".description").each(function () {
       var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare time
       if (plannerHour < currentHour) {
