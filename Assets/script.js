@@ -4,9 +4,11 @@ const dayjs = require("dayjs");
 
 $().ready(function () {
   function getTimeNow() {
-    var todayTime = Dayjs().format("MMMM Do, h:mm a");
+    var todayTime = Dayjs().format("MMMM D, h:mm A");
     $("#currentDay").text(todayTime);
   }
+  console.log(dayjs().format())
+  
   getTimeNow(); // when DOM ready, get js, show on page
 
   // Check Time State (Past, Present, Future) then set color for Time State
