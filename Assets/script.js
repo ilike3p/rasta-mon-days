@@ -1,15 +1,7 @@
-import dayjs from "dayjs";
-
-var advancedFormat = require('dayjs/plugin/advancedFormat')
-dayjs.extend(advancedFormat)
-
-dayjs().format('Q Do k kk X x')
-
-var getTimeNow = dayjs
 
 $().ready(function () {
   function getTimeNow() {
-    var todayTime = require().format["MMMM D, h:mm a"];
+    var todayTime = dayjs().format('dddd, MMMM D YYYY, h:mm:ss A');
     $("#currentDay").text(todayTime);
   }
   getTimeNow(); // when DOM ready, get js, show on page
@@ -17,7 +9,7 @@ $().ready(function () {
   // Check Time State (Past, Present, Future) then set color for Time State
   checkHourState();
   function checkHourState() {
-    var currentHour = require().format("H"); //uses 24 hr format 
+    var currentHour = dayjs().format("H"); //uses 24 hr format 
     $(".description").each(function () {
       var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare to moment js time
       if (plannerHour < currentHour) {
