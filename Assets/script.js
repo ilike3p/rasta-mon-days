@@ -1,14 +1,17 @@
-import dayjs, { Dayjs } from "dayjs";
+import dayjs, { Dayjs, isDayjs } from "dayjs";
 
-var getTimenow
+let now = dayjs
 
-$().ready(function () {
-  function getTimenow () {
-    let todayTime = dayjs().format("MMMM D, h:mm a");
-    $("#currentDay").text(todayTime);
-}
-  
-  getTimenow(); // when DOM ready, get moment js, show on page
+console.log(now.format("MMMM D, h:mm a"));
+
+$(function () {
+  function Dayjs() {
+    var todayTime = now().format("MMMM D, h:mm a");
+    $("#currentDay").text(todayTime)
+  }
+
+
+  Dayjs(); // when DOM ready, get moment js, show on page
 
 
   // Check Time State (Past, Present, Future) then set color for Time State
@@ -52,6 +55,8 @@ $().ready(function () {
     $("#17").val(localStorage.getItem("17"));
   }
 });
+dayjs.extend(LocalizedFormat)
+dayjs().format('L LT')
 
 // local storage checking on page load to show plans
 window.onload = checkSchedule();
