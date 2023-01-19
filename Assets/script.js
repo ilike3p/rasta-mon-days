@@ -1,26 +1,27 @@
-import dayjs, { Dayjs, isDayjs } from "dayjs";
+import dayjs from "dayjs";
 
-let now = dayjs
+var advancedFormat = require('dayjs/plugin/advancedFormat')
+dayjs.extend(advancedFormat)
 
-console.log(now.format("MMMM D, h:mm a"));
+dayjs().format('Q Do k kk X x')
 
-$(function () {
-  function Dayjs() {
-    var todayTime = now(Date).format("MMMM D, h:mm a");
-    $("#currentDay").text(todayTime)
+var getTimeNow = dayjs
+
+$().ready(function () {
+  function getTimeNow() {
+    var todayTime = require().format["MMMM D, h:mm a"];
+    $("#currentDay").text(todayTime);
   }
-
-  Dayjs(); // when DOM ready, get js show on page
-
+  getTimeNow(); // when DOM ready, get js, show on page
 
   // Check Time State (Past, Present, Future) then set color for Time State
   checkHourState();
   function checkHourState() {
-    var currentHour = dayjs().format("H"); //uses 24 hr format 
+    var currentHour = require().format("H"); //uses 24 hr format 
     $(".description").each(function () {
-      var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare to js time
+      var plannerHour = parseInt($(this).attr("id")); // Use planner id as number to compare to moment js time
       if (plannerHour < currentHour) {
-        $(this).addClass("past");
+        $(this).addClass("past"); 
       } else if (plannerHour == currentHour) {
         $(this).addClass("present");
       } else if (plannerHour > currentHour) {
@@ -54,8 +55,6 @@ $(function () {
     $("#17").val(localStorage.getItem("17"));
   }
 });
-dayjs.extend(LocalizedFormat)
-dayjs().format('L LT')
 
 // local storage checking on page load to show plans
 window.onload = checkSchedule();
