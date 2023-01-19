@@ -6,12 +6,11 @@ console.log(now.format("MMMM D, h:mm a"));
 
 $(function () {
   function Dayjs() {
-    var todayTime = now().format("MMMM D, h:mm a");
+    var todayTime = now(Date).format("MMMM D, h:mm a");
     $("#currentDay").text(todayTime)
   }
 
-
-  Dayjs(); // when DOM ready, get moment js, show on page
+  Dayjs(); // when DOM ready, get js show on page
 
 
   // Check Time State (Past, Present, Future) then set color for Time State
